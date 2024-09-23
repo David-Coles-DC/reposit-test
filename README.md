@@ -24,7 +24,7 @@ run the following in the terminal or command prompt
 ```
 npx ts-node src/getRentPerTenant
 ```
-You will be prompted to enter a property id (i.e p_1001).
+You will be prompted to enter a property id (i.e p_1002).
 
 At the next prompt, if you would like to receive the result in pounds enter **1**, if you would like it in pence then enter **2**. 
 
@@ -46,7 +46,7 @@ run the following in the terminal or command prompt
 ```
 npx ts-node src/getPropertyStatus
 ```
-You will be prompted to enter a property id (i.e p_1001).
+You will be prompted to enter a property id (i.e p_1002).
 
 A property status code will be returned if a valid property has been found;
 - **PROPERTY_VACANT**: The property has no tenants.
