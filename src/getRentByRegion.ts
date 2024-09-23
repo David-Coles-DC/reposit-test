@@ -2,18 +2,19 @@ import * as fs from "fs";
 import * as path from "path";
 import { parse } from 'csv-parse';
 import { PropertyDetails } from './types';
+import * as readline from "readline";
 
-//Creat an input for the user
-const readline = require('readline').createInterface({
+//Create an input for the user
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
 //Creat a question for the region input
-readline.question('Please enter a region? ', (region: string) => {
+rl.question('Please enter a region? ', (region: string) => {
     // pass the input value to the getRentByRegion function
     getRentByRegion(region);
-    readline.close();
+    rl.close();
 });
 
 //Obtain the average rent by region based on the user input

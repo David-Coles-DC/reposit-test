@@ -2,25 +2,26 @@ import * as fs from "fs";
 import * as path from "path";
 import { parse } from 'csv-parse';
 import { PropertyDetails, TenantDetails } from './types';
+import * as readline from "readline";
 
-//Creat an input for the user
-const readline = require('readline').createInterface({
+//Create an input for the user
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-//Creat a question for the propertyId input
-readline.question('Please enter a property id: ', (propertyId: string) => {
+//Creat a question for the region input
+rl.question('Please enter a property id: ', (propertyId: string) => {
     //Creat a question for the return type input
-    readline.question('Please enter 1 to return in pounds or 2 to return in pence: ', (returnValue: number) => {
+    rl.question('Please enter 1 to return in pounds or 2 to return in pence: ', (returnValue: string) => {
         // pass the input values to the getRentPerTenant function
         getRentPerTenant(propertyId, returnValue);
-        readline.close();
+        rl.close();
     });
 });
 
 //Obtain the rent per tenant based on the propertyId user input and return a value
-export function getRentPerTenant(propertyId: string, returnValue: number) {
+export function getRentPerTenant(propertyId: string, returnValue: string) {
     //set the values for the CSV file
     const csvFilePath: string = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
     //set the headers for the CSV file
@@ -81,11 +82,11 @@ export function getRentPerTenant(propertyId: string, returnValue: number) {
                     //if no results match the user input
                     console.error('There are no tenants for this property');
                 } else {
-                    if (returnValue == 1) {
+                    if (returnValue == '1') {
                         //calculate the rent per tenant in pounds and display it to the user
                         rentPerTenant = (totalRent / result.length) / 100;
                         console.log('Monthly rent per tenant is £' + rentPerTenant);
-                    } else if (returnValue == 2) {
+                    } else if (returnValue == '2') {
                         //calculate the rent per tenant in pence and display it to the user
                         rentPerTenant = totalRent / result.length;
                         console.log('Monthly rent per tenant is ' + rentPerTenant + 'p');

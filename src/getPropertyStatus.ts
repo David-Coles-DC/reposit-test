@@ -2,18 +2,19 @@ import * as fs from "fs";
 import * as path from "path";
 import { parse } from 'csv-parse';
 import { PropertyDetails, TenantDetails } from './types';
+import * as readline from "readline";
 
-//Creat an input for the user
-const readline = require('readline').createInterface({
+//Create an input for the user
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
 //Creat a question for the region input
-readline.question('Please enter a property id: ', (propertyId: string) => {
+rl.question('Please enter a property id: ', (propertyId: string) => {
     // pass the input value to the getPropertyStatus function
     getPropertyStatus(propertyId);
-    readline.close();
+    rl.close();
 });
 
 //Obtain the property status based on the user input
