@@ -1,9 +1,13 @@
 # Reposit Test - David Coles
 ***
 ## Overview
+Make sure you have all of the npm packages by running
+```
+npm install
+```
 You can run the code from the command line in a TypeScript REPL using ts-node
 ```
-ts-code
+ts-node
 ```
 ***
 ### 1. Calculate the average rent of properties by region
