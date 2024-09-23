@@ -18,6 +18,7 @@ export function validatePostcodes() {
     const headers: string[] = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
     //open the CSV file
     const fileContent: string = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+    let invalidPostcodes: PropertyDetails[] = [];
 
     //parse the CSV file and exclude the header row
     parse(fileContent, {
@@ -44,8 +45,10 @@ export function validatePostcodes() {
             for (let i = 0; i < result.length; i++) {
                 console.log(result[i].id);
             }
+            invalidPostcodes = [...result];
         }
     });
+    return invalidPostcodes;
 }
 
 validatePostcodes();
