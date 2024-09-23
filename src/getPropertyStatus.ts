@@ -12,12 +12,12 @@ const readline = require('readline').createInterface({
 //Creat a question for the region input
 readline.question('Please enter a property id: ', (propertyId: string) => {
     // pass the input value to the getPropertyStatus function
-    getPropertyStatusFN(propertyId);
+    getPropertyStatus(propertyId);
     readline.close();
 });
 
 //Obtain the property status based on the user input
-export function getPropertyStatusFN(propertyId: string) {
+export function getPropertyStatus(propertyId: string) {
     //set the values for the CSV file
     const filePath: string = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
     //set the headers for the CSV file
