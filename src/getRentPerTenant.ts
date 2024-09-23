@@ -1,22 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { parse } from 'csv-parse';
-
-type PropertyDetails = {
-    id: string;
-    address: string;
-    postcode: string;
-    monthlyRentPence: number;
-    region: string;
-    capacity: number;
-    tenancyEndDate: Date;
-};
-
-type TenantDetails = {
-    id: string;
-    propertyId: string;
-    name: string;
-};
+import { PropertyDetails, TenantDetails } from './types';
 
 const readline = require('readline').createInterface({
     input: process.stdin,
@@ -25,7 +10,7 @@ const readline = require('readline').createInterface({
 
 readline.question('Please enter a property id: ', (propertyId: string) => {
     readline.question('Please enter 1 to return in pounds or 2 to return in pence: ', (returnValue: number) => {
-        const rentPerTenant: number = getRentPerTenant(propertyId, returnValue);
+        getRentPerTenant(propertyId, returnValue);
         readline.close();
     });
 });

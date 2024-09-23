@@ -1,16 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { parse } from 'csv-parse';
-
-type PropertyDetails = {
-    id: string;
-    address: string;
-    postcode: string;
-    monthlyRentPence: number;
-    region: string;
-    capacity: number;
-    tenancyEndDate: Date;
-};
+import { PropertyDetails } from './types';
 
 function validPostcode(postcode: string) {
     postcode = postcode.replace(/\s/g, "");
