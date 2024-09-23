@@ -18,8 +18,12 @@ const readline = require('readline').createInterface({
 });
 
 readline.question('Please enter a region? ', (region: string) => {
-    const averageRent = getRentByRegion(region);
-    console.log(averageRent);
+    if (['ENGLAND', 'WALES', 'SCOTLAND', 'N.IRELAND'].contains(region.toUpperCase())) {
+        const averageRent = getRentByRegion(region);
+        console.log(averageRent);
+    } else {
+        console.log('Region does not exist');
+    }
     readline.close();
 });
 
