@@ -24,9 +24,9 @@ run the following in the terminal or command prompt
 ```
 npx ts-node src/getRentPerTenant
 ```
-You will be prompted to enter a property id.
+You will be prompted to enter a property id (i.e p_1001).
 
-At the next prompt, if you would like to receive the result in pounds enter 1, if you would like it in pence then enter 2. 
+At the next prompt, if you would like to receive the result in pounds enter **1**, if you would like it in pence then enter **2**. 
 
 You will then receive your answer.
 ***
