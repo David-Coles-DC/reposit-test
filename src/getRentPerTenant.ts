@@ -10,7 +10,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-//Creat a question for the region input
+//Create a question for the region input
 rl.question('Please enter a property id: ', (propertyId: string) => {
     //Creat a question for the return type input
     rl.question('Please enter 1 to return in pounds or 2 to return in pence: ', (returnValue: string) => {

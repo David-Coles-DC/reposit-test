@@ -1,8 +1,8 @@
 import { afterAll, test, expect } from '@jest/globals';
-import { toBeOneOf } from 'jest-extended';
+import * as matchers from 'jest-extended';
 import { getPropertyStatus } from './getPropertyStatus';
 
-expect.extend({ toBeOneOf });
+expect.extend(matchers);
 
 test('use invalid propertyId', () => {
     expect(getPropertyStatus('xyz')).toBe('');

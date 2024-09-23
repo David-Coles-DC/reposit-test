@@ -10,7 +10,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-//Creat a question for the region input
+//Create a question for the region input
 rl.question('Please enter a property id: ', (propertyId: string) => {
     // pass the input value to the getPropertyStatus function
     getPropertyStatus(propertyId);
