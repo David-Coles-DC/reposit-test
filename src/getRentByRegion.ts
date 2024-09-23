@@ -18,12 +18,7 @@ const readline = require('readline').createInterface({
 });
 
 readline.question('Please enter a region? ', (region: string) => {
-    if (['ENGLAND', 'WALES', 'SCOTLAND', 'N.IRELAND'].contains(region.toUpperCase())) {
-        const averageRent = getRentByRegion(region);
-        console.log(averageRent);
-    } else {
-        console.log('Region does not exist');
-    }
+    const averageRent = getRentByRegion(region);
     readline.close();
 });
 
@@ -31,6 +26,7 @@ export function getRentByRegion(region: string) {
     const csvFilePath = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
     const headers = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
     const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+    let average = 0;
 
     parse(fileContent, {
         delimiter: ',',
@@ -46,8 +42,12 @@ export function getRentByRegion(region: string) {
         if (error) {
             console.error(error);
         }
-        let average = Math.round(result.reduce((total: number, next) => +total + +next.monthlyRentPence, 0) / result.length) / 100;
-        console.log("Average rent for", region, "is £" + average);
+        if (result.length == 0) {
+            console.error('Region does not exist');
+        } else {
+            average = Math.round(result.reduce((total: number, next) => +total + +next.monthlyRentPence, 0) / result.length) / 100;
+            console.log('Average rent for', region, 'is £' + average);
+        }
     });
-    return region;
+    return average;
 }
