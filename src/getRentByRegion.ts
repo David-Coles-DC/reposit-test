@@ -9,13 +9,14 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-//Creat a question for the input
+//Creat a question for the region input
 readline.question('Please enter a region? ', (region: string) => {
     // pass the input value to the getRentByRegion function
     getRentByRegion(region);
     readline.close();
 });
 
+//Obtain the average rent by region based on the user input
 export function getRentByRegion(region: string) {
     //set the values for the CSV file
     const filePath: string = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
@@ -50,4 +51,5 @@ export function getRentByRegion(region: string) {
             console.log('Average rent for', region, 'is £' + average);
         }
     });
+    return average;
 }

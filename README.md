@@ -1,7 +1,7 @@
 # Reposit Test - David Coles
 ***
 ## Overview
-Make sure you have all of the npm packages by running
+Make sure you have all the npm packages by running
 ```
 npm install
 ```
@@ -9,7 +9,7 @@ npm install
 ### 1. Calculate the average rent of properties by region
 run the following in the terminal or command prompt
 ```
-npx ts-node src/getRentByRegion.ts
+npx ts-node src/getRentByRegion
 ```
 You will be prompted to enter a region, enter either of the following;
 + **England**,
