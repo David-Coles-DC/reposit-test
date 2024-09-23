@@ -18,15 +18,15 @@ const readline = require('readline').createInterface({
 });
 
 readline.question('Please enter a region? ', (region: string) => {
-    const averageRent = getRentByRegion(region);
+    const averageRent: number = getRentByRegion(region);
     readline.close();
 });
 
 export function getRentByRegion(region: string) {
-    const csvFilePath = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
-    const headers = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
-    const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
-    let average = 0;
+    const filePath: string = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
+    const headers: string[] = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
+    const fileContent: string = fs.readFileSync(filePath, { encoding: 'utf-8' });
+    let average: number = 0;
 
     parse(fileContent, {
         delimiter: ',',

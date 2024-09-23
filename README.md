@@ -34,6 +34,9 @@ You will then receive your answer.
 ```
 npx ts-node src/validatePostcodes
 ```
+Once the code is complete you will receive a list of propertyIds that have invalid postcodes.
+
+If no postcodes are invalid then you will be notified that they are all correct.
 ***
 ### 4. Get the 'status' of a property
 ```
