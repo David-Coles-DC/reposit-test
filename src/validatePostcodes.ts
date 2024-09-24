@@ -1,7 +1,5 @@
-import * as fs from "fs";
-import * as path from "path";
-import { parse } from 'csv-parse';
 import { PropertyDetails } from './types';
+import { openPropertyCsv } from './openCsvFile';
 
 //A function to test if a postcode is valid or not, will return **true** if valid and **false** if invalid
 function validPostcode(postcode: string) {
@@ -11,44 +9,27 @@ function validPostcode(postcode: string) {
 }
 
 //a function that will return all propertyIds where the postcode is invalid
-export function validatePostcodes() {
-    //set the values for the CSV file
-    const csvFilePath: string = path.resolve(__dirname, 'files/technical-challenge-properties-september-2024.csv');
-    //set the headers for the CSV file
-    const headers: string[] = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
-    //open the CSV file
-    const fileContent: string = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+export async function validatePostcodes() {
     let invalidPostcodes: PropertyDetails[] = [];
 
-    //parse the CSV file and exclude the header row
-    parse(fileContent, {
-        delimiter: ',',
-        columns: headers,
-        fromLine: 2,
-        on_record: (record) => {
-            //only include records where the postcode is invalid
-            if (validPostcode(record.postcode)) {
-                return;
-            }
-            return record;
-        },
-    }, (error, result: PropertyDetails[]) => {
-        if (error) {
-            console.error(error);
-        }
-        if (result.length == 0) {
+    await openPropertyCsv()
+        .then((data) => {
+            invalidPostcodes = data.filter((record: PropertyDetails) => !validPostcode(record.postcode));
+        });
+
+        if (invalidPostcodes.length == 0) {
             //all postcodes have passed as being valid
             console.log('All postcodes are valid');
         } else {
             //display a list of propertyIds where the postcode is invalid
-            console.log('The following', result.length, 'propertyIds have invalid postcodes');
-            for (let i = 0; i < result.length; i++) {
-                console.log(result[i].id);
+            console.log('The following', invalidPostcodes.length, 'propertyIds have invalid postcodes');
+            for (let i = 0; i < invalidPostcodes.length; i++) {
+                console.log(invalidPostcodes[i].id);
             }
-            invalidPostcodes = [...result];
         }
-    });
     return invalidPostcodes;
 }
 
-validatePostcodes();
+validatePostcodes().then(r => {
+    return
+});
