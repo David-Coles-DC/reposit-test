@@ -1,8 +1,9 @@
 import { afterAll, test, expect } from '@jest/globals';
 import { validatePostcodes } from "./validatePostcodes";
 
-test('use invalid postcode', () => {
-    expect(validatePostcodes()).toBeDefined();
+test('test that the function returns an array', async () => {
+    const data = await validatePostcodes();
+    expect(data).toBeDefined();
 });
 
 afterAll(done => {
