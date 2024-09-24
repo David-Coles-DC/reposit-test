@@ -5,6 +5,10 @@ Make sure you have all the npm packages by running
 ```
 npm install
 ```
+You can run the tests written in Jest
+```
+npm test
+```
 ***
 ### 1. Calculate the average rent of properties by region
 run the following in the terminal or command prompt
