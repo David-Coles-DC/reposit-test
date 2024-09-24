@@ -28,6 +28,7 @@ export async function getRentPerTenant(propertyId: string, returnValue: string) 
 
     await openPropertyCsv()
         .then((data) => {
+            //filter the property data by the propertyId that the user entered
             matchedProperties = data.filter((record: PropertyDetails) => record.id.toUpperCase() == propertyId.toUpperCase());
         });
 
@@ -42,6 +43,7 @@ export async function getRentPerTenant(propertyId: string, returnValue: string) 
 
     await openTenantCsv()
         .then((data) => {
+            //filter the tenant data by the propertyId that the user entered
             matchedTenants = data.filter((record: TenantDetails) => record.propertyId.toUpperCase() == propertyId.toUpperCase());
         });
 

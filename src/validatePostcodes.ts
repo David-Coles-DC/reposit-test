@@ -14,6 +14,7 @@ export async function validatePostcodes() {
 
     await openPropertyCsv()
         .then((data) => {
+            //filter the property data by invalid postcodes
             invalidPostcodes = data.filter((record: PropertyDetails) => !validPostcode(record.postcode));
         });
 

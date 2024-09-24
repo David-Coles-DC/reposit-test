@@ -23,6 +23,7 @@ export async function getRentByRegion(region: string) {
 
     await openPropertyCsv()
         .then((data) => {
+            //filter the property data by the region that the user entered
             matchedProperties = data.filter((record: PropertyDetails) => record.region.toUpperCase() == region.toUpperCase());
         });
 
