@@ -13,7 +13,8 @@ export async function openPropertyCsv():Promise<any> {
             .pipe(parse({
                 delimiter: ',',
                 columns: headers,
-                fromLine: 2
+                fromLine: 2,
+                cast: true
             }));
         for await (const record of parser) {
             // Work with each record
