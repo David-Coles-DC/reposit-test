@@ -4,7 +4,6 @@ import { openPropertyCsv } from '../openCsvFile';
 //Obtain the average rent by region based on the user input
 export async function getRentByRegion(region: string) {
     let matchedProperties: PropertyDetails[] = [];
-    let average: number = 0;
 
     await openPropertyCsv()
         .then((data: PropertyDetails[]) => {
