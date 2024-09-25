@@ -1,4 +1,4 @@
-import { PropertyDetails, TenantDetails } from '../types';
+import { PropertyDetails, TenantDetails } from './types';
 import { openPropertyCsv, openTenantCsv } from '../openCsvFile';
 
 //Obtain the rent per tenant based on the propertyId user input and return a value

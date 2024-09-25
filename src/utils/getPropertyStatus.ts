@@ -1,4 +1,4 @@
-import {PropertyDetails, TenantDetails} from '../types';
+import {PropertyDetails, TenantDetails} from './types';
 import {openPropertyCsv, openTenantCsv} from '../openCsvFile';
 
 //Obtain the property status based on the user input

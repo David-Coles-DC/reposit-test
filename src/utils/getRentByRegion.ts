@@ -1,4 +1,4 @@
-import { PropertyDetails } from '../types';
+import { PropertyDetails } from './types';
 import { openPropertyCsv } from '../openCsvFile';
 
 //Obtain the average rent by region based on the user input

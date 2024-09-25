@@ -1,4 +1,4 @@
-import { PropertyDetails } from './types';
+import { PropertyDetails } from './utils/types';
 import { openPropertyCsv } from './openCsvFile';
 
 //A function to test if a postcode is valid or not, will return **true** if valid and **false** if invalid

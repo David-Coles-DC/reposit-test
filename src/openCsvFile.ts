@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { parse } from 'csv-parse';
-import { PropertyDetails, TenantDetails } from "./types";
+import { PropertyDetails, TenantDetails } from "./utils/types";
 
 async function parseCsv<T>(fileName: string, headers: string[]): Promise<T[]> {
     const records: T[] = [];
