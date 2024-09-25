@@ -45,23 +45,20 @@ export async function getPropertyStatus(propertyId: string) {
             matchedTenants = data.filter((record: TenantDetails) => record.propertyId.toUpperCase() == propertyId.toUpperCase());
         });
 
-    if (matchedTenants.length == 0) {
+    matchedTenants.length ?
         //The property has no tenants
-        propertyStatus = 'PROPERTY_VACANT';
-    } else {
-        if (new Date(tenancyEndDate) > new Date(new Date())) {
-            if (capacity > matchedTenants.length) {
+        propertyStatus = 'PROPERTY_VACANT'
+    :
+        new Date(tenancyEndDate) > new Date(new Date()) ?
+            capacity > matchedTenants.length ?
                 //The property is not yet at capacity and the tenancy end date has not yet expired
-                propertyStatus = 'PARTIALLY_VACANT';
-            } else {
+                propertyStatus = 'PARTIALLY_VACANT'
+            :
                 //The property is at capacity and the tenancy end date has not yet expired
-                propertyStatus = 'PROPERTY_ACTIVE';
-            }
-        } else {
+                propertyStatus = 'PROPERTY_ACTIVE'
+        :
             //The property has at least one tenant but tenancy end date has expired
-            propertyStatus = 'PROPERTY_OVERDUE';
-        }
-    }
+            propertyStatus = 'PROPERTY_OVERDUE'
 
     console.log(propertyStatus);
     return propertyStatus;
