@@ -11,14 +11,19 @@ describe('getPropertyStatus', () => {
         };
     });
 
-    test('Should return correct status - PARTIALLY_VACANT', async () => {
-        const data = await getPropertyStatus('p_1002');
-        expect(data).toBe('PARTIALLY_VACANT');
+    test('Should return correct status - PROPERTY_OVERDUE', async () => {
+        const data = await getPropertyStatus('p_1002', new Date("2100-01-01"));
+        expect(data).toBe('PROPERTY_OVERDUE');
     });
 
-    test('Should return correct status - PROPERTY_OVERDUE', async () => {
-        const data = await getPropertyStatus('p_1003', new Date("2001-01-01"));
-        expect(data).toBe('PROPERTY_OVERDUE');
+    test('Should return correct status - PROPERTY_ACTIVE', async () => {
+        const data = await getPropertyStatus('p_1004', new Date("2001-01-01"));
+        expect(data).toBe('PROPERTY_ACTIVE');
+    });
+
+    test('Should return correct status - PARTIALLY_VACANT', async () => {
+        const data = await getPropertyStatus('p_1005');
+        expect(data).toBe('PARTIALLY_VACANT');
     });
 
     test('Valid propertyId should return a status', async () => {
