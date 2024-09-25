@@ -1,5 +1,5 @@
 import {test, expect, describe} from '@jest/globals';
-import { getRentPerTenant } from './utils/getRentPerTenant';
+import { getRentPerTenant } from '../utils/getRentPerTenant';
 
 describe('getRentPerTenant', () => {
     test('Invalid region should throw an error', async () => {

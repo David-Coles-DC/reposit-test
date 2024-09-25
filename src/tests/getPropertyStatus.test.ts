@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { getPropertyStatus } from './utils/getPropertyStatus';
+import { getPropertyStatus } from '../utils/getPropertyStatus';
 import * as matchers from 'jest-extended';
 
 expect.extend(matchers);
