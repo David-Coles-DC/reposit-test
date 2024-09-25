@@ -5,8 +5,6 @@ import { openPropertyCsv, openTenantCsv } from '../openCsvFile';
 export async function getRentPerTenant(propertyId: string) {
     let matchedProperties: PropertyDetails[] = [];
     let matchedTenants: TenantDetails[] = [];
-    let totalRent: number = 0;
-    let rentPerTenant: number = 0;
 
     await openPropertyCsv()
         .then((data) => {
@@ -20,7 +18,7 @@ export async function getRentPerTenant(propertyId: string) {
     }
 
     //get the monthly rental amount
-    totalRent = matchedProperties[0].monthlyRentPence;
+    const totalRent = matchedProperties[0].monthlyRentPence;
 
     await openTenantCsv()
         .then((data) => {
@@ -31,9 +29,8 @@ export async function getRentPerTenant(propertyId: string) {
     if (matchedTenants.length === 0) {
         //if no results match the user input
         throw new Error(`No tenants found for ${propertyId}`);
-    } else {
-        //calculate the rent per tenant
-        rentPerTenant = totalRent / matchedTenants.length;
     }
-    return rentPerTenant;
+
+    //calculate the rent per tenant
+    return totalRent / matchedTenants.length;
 }
