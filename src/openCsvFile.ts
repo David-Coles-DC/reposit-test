@@ -7,6 +7,7 @@ export async function openPropertyCsv():Promise<PropertyDetails[]> {
     const headers: string[] = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
     let records: PropertyDetails[] = [];
 
+    //process and parse the CSV file
     const processFile = async () => {
         const parser = fs
             .createReadStream(`${__dirname}/files/technical-challenge-properties-september-2024.csv`)
@@ -32,6 +33,7 @@ export async function openTenantCsv():Promise<TenantDetails[]> {
     const headers: string[] = ['id', 'propertyId', 'name'];
     let records: TenantDetails[] = [];
 
+    //process and parse the CSV file
     const processFile = async () => {
         const parser = fs
             .createReadStream(`${__dirname}/files/technical-challenge-tenants-september-2024.csv`)
