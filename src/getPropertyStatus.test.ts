@@ -4,7 +4,7 @@ import * as matchers from 'jest-extended';
 
 expect.extend(matchers);
 
-test('Invalid property ID should throw an error', async () => {
+test('Invalid propertyId should throw an error', async () => {
     const invalidPropertyCall = async () => {
         await getPropertyStatus('xyz');
     };

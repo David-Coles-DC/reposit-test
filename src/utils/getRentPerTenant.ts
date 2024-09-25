@@ -1,8 +1,8 @@
-import { PropertyDetails, TenantDetails } from './types';
-import { openPropertyCsv, openTenantCsv } from './openCsvFile';
+import { PropertyDetails, TenantDetails } from '../types';
+import { openPropertyCsv, openTenantCsv } from '../openCsvFile';
 
 //Obtain the rent per tenant based on the propertyId user input and return a value
-export async function getRentPerTenant(propertyId: string, returnValue: string) {
+export async function getRentPerTenant(propertyId: string) {
     let matchedProperties: PropertyDetails[] = [];
     let matchedTenants: TenantDetails[] = [];
     let totalRent: number = 0;
@@ -16,8 +16,7 @@ export async function getRentPerTenant(propertyId: string, returnValue: string) 
 
     if (matchedProperties.length == 0) {
         //if no results match the user input
-        console.error('Property does not exist');
-        return rentPerTenant;
+        throw new Error(`No properties found for ${propertyId}`);
     }
 
     //get the monthly rental amount
@@ -31,20 +30,10 @@ export async function getRentPerTenant(propertyId: string, returnValue: string) 
 
     if (matchedTenants.length == 0) {
         //if no results match the user input
-        console.error('There are no tenants for this property');
+        throw new Error(`No tenants found for ${propertyId}`);
     } else {
-        if (returnValue == '1') {
-            //calculate the rent per tenant in pounds and display it to the user
-            rentPerTenant = (totalRent / matchedTenants.length) / 100;
-            console.log(`Monthly rent per tenant is £${rentPerTenant}`);
-        } else if (returnValue == '2') {
-            //calculate the rent per tenant in pence and display it to the user
-            rentPerTenant = totalRent / matchedTenants.length;
-            console.log(`Monthly rent per tenant is ${rentPerTenant}p`);
-        } else {
-            //return an error when the user did not specify either 1 or 2 as the return value
-            console.error('Invalid response');
-        }
+        //calculate the rent per tenant
+        rentPerTenant = totalRent / matchedTenants.length;
     }
     return rentPerTenant;
 }

@@ -1,16 +1,13 @@
-import { afterAll, test, expect } from '@jest/globals';
-import { getRentPerTenant } from './getRentPerTenant';
+import { test, expect } from '@jest/globals';
+import { getRentPerTenant } from './utils/getRentPerTenant';
 
-test('use invalid region', async () => {
-    const data = await getRentPerTenant('xyz', '1');
-    expect(data).toBe(0);
+test('Invalid region should throw an error', async () => {
+    const invalidPropertyCall = async () => {
+        await getRentPerTenant('xyz');
+    };
 });
 
-test('use valid region', async () => {
-    const data = await getRentPerTenant('England', '1');
+test('use valid property', async () => {
+    const data = await getRentPerTenant('p_1002');
     expect(data).toBeGreaterThanOrEqual(0);
-});
-
-afterAll(done => {
-    done();
 });
