@@ -2,7 +2,7 @@ import {PropertyDetails, TenantDetails} from './types';
 import {openPropertyCsv, openTenantCsv} from '../openCsvFile';
 
 //Obtain the property status based on the user input
-export async function getPropertyStatus(propertyId: string) {
+export async function getPropertyStatus(propertyId: string, currentDate: Date = new Date()) {
     let matchedProperties: PropertyDetails[] = [];
     let matchedTenants: TenantDetails[] = [];
 
@@ -31,7 +31,7 @@ export async function getPropertyStatus(propertyId: string) {
     return matchedTenants.length ?
         //The property has no tenants
         'PROPERTY_VACANT' :
-        new Date(tenancyEndDate) > new Date(new Date()) ?
+        new Date(tenancyEndDate) > currentDate ?
             capacity > matchedTenants.length ?
                 //The property is not yet at capacity and the tenancy end date has not yet expired
                 'PARTIALLY_VACANT' :
