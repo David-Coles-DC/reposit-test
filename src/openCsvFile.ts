@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import { parse } from 'csv-parse';
-import { PropertyDetails } from "./types";
+import { PropertyDetails, TenantDetails } from "./types";
 
-export async function openPropertyCsv():Promise<any> {
+export async function openPropertyCsv():Promise<PropertyDetails[]> {
     //set the headers for the CSV file*/
     const headers: string[] = ['id', 'address', 'postcode', 'monthlyRentPence', 'region', 'capacity', 'tenancyEndDate'];
     let records: PropertyDetails[] = [];
@@ -27,10 +27,10 @@ export async function openPropertyCsv():Promise<any> {
     return records;
 }
 
-export async function openTenantCsv():Promise<any> {
+export async function openTenantCsv():Promise<TenantDetails[]> {
     //set the headers for the CSV file*/
     const headers: string[] = ['id', 'propertyId', 'name'];
-    let records: PropertyDetails[] = [];
+    let records: TenantDetails[] = [];
 
     const processFile = async () => {
         const parser = fs
