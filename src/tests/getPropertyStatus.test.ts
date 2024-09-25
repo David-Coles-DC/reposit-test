@@ -4,6 +4,7 @@ import * as matchers from 'jest-extended';
 
 expect.extend(matchers);
 
+//The following tests have been set up and pass, however if the data was to change then the test could potentially then fail.
 describe('getPropertyStatus', () => {
     test('Invalid propertyId should throw an error', async () => {
         const invalidPropertyCall = async () => {
@@ -24,6 +25,11 @@ describe('getPropertyStatus', () => {
     test('Should return correct status - PARTIALLY_VACANT', async () => {
         const data = await getPropertyStatus('p_1005');
         expect(data).toBe('PARTIALLY_VACANT');
+    });
+
+    test('Should return correct status - PROPERTY_VACANT', async () => {
+        const data = await getPropertyStatus('p_1029');
+        expect(data).toBe('PROPERTY_VACANT');
     });
 
     test('Valid propertyId should return a status', async () => {
