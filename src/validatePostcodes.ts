@@ -31,6 +31,6 @@ export async function validatePostcodes() {
     return invalidPostcodes;
 }
 
-validatePostcodes().then(r => {
+validatePostcodes().then(_ => {
     return
 });
