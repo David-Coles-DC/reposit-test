@@ -23,7 +23,7 @@ export async function validatePostcodes() {
             console.log('All postcodes are valid');
         } else {
             //display a list of propertyIds where the postcode is invalid
-            console.log('The following', invalidPostcodes.length, 'propertyIds have invalid postcodes');
+            console.log(`The following ${invalidPostcodes.length} propertyIds have invalid postcodes`);
             for (let i = 0; i < invalidPostcodes.length; i++) {
                 console.log(invalidPostcodes[i].id);
             }

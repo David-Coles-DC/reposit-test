@@ -54,11 +54,11 @@ export async function getRentPerTenant(propertyId: string, returnValue: string) 
         if (returnValue == '1') {
             //calculate the rent per tenant in pounds and display it to the user
             rentPerTenant = (totalRent / matchedTenants.length) / 100;
-            console.log('Monthly rent per tenant is £' + rentPerTenant);
+            console.log(`Monthly rent per tenant is £${rentPerTenant}`);
         } else if (returnValue == '2') {
             //calculate the rent per tenant in pence and display it to the user
             rentPerTenant = totalRent / matchedTenants.length;
-            console.log('Monthly rent per tenant is ' + rentPerTenant + 'p');
+            console.log(`Monthly rent per tenant is ${rentPerTenant}p`);
         } else {
             //return an error when the user did not specify either 1 or 2 as the return value
             console.error('Invalid response');

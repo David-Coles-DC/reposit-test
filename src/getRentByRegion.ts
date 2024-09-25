@@ -33,7 +33,7 @@ export async function getRentByRegion(region: string) {
     } else {
         //calculate the average rent and show it to the user
         average = Math.round(matchedProperties.reduce((total: number, next) => +total + +next.monthlyRentPence, 0) / matchedProperties.length) / 100;
-        console.log('Average rent for', region, 'is £' + average);
+        console.log(`Average rent for ${region} is £${average}`);
     }
     return average;
 }
