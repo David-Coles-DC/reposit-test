@@ -9,10 +9,10 @@ export async function getRentByRegion(region: string) {
     await openPropertyCsv()
         .then((data: PropertyDetails[]) => {
             //filter the property data by the region that the user entered
-            matchedProperties = data.filter((record: PropertyDetails) => record.region.toUpperCase() == region.toUpperCase());
+            matchedProperties = data.filter((record: PropertyDetails) => record.region.toUpperCase() === region.toUpperCase());
         });
 
-    if (matchedProperties.length == 0) {
+    if (matchedProperties.length === 0) {
         //if no results match the user input
         throw new Error(`No properties found for ${region}`);
     } else {

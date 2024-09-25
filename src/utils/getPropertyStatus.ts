@@ -13,7 +13,7 @@ export async function getPropertyStatus(propertyId: string) {
             matchedProperties = data.filter((record: PropertyDetails) => record.id.toUpperCase() == propertyId.toUpperCase());
         });
 
-    if (matchedProperties.length == 0) {
+    if (matchedProperties.length === 0) {
         //if no results match the user input
         throw new Error(`No property found for ${propertyId}`);
     }
@@ -26,7 +26,7 @@ export async function getPropertyStatus(propertyId: string) {
     await openTenantCsv()
         .then((data: TenantDetails[]) => {
             //filter the tenant data by the propertyId that the user entered
-            matchedTenants = data.filter((record: TenantDetails) => record.propertyId.toUpperCase() == propertyId.toUpperCase());
+            matchedTenants = data.filter((record: TenantDetails) => record.propertyId.toUpperCase() === propertyId.toUpperCase());
         });
 
     matchedTenants.length ?

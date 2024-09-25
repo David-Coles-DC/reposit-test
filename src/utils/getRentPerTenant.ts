@@ -11,10 +11,10 @@ export async function getRentPerTenant(propertyId: string) {
     await openPropertyCsv()
         .then((data) => {
             //filter the property data by the propertyId that the user entered
-            matchedProperties = data.filter((record: PropertyDetails) => record.id.toUpperCase() == propertyId.toUpperCase());
+            matchedProperties = data.filter((record: PropertyDetails) => record.id.toUpperCase() === propertyId.toUpperCase());
         });
 
-    if (matchedProperties.length == 0) {
+    if (matchedProperties.length === 0) {
         //if no results match the user input
         throw new Error(`No properties found for ${propertyId}`);
     }
@@ -25,10 +25,10 @@ export async function getRentPerTenant(propertyId: string) {
     await openTenantCsv()
         .then((data) => {
             //filter the tenant data by the propertyId that the user entered
-            matchedTenants = data.filter((record: TenantDetails) => record.propertyId.toUpperCase() == propertyId.toUpperCase());
+            matchedTenants = data.filter((record: TenantDetails) => record.propertyId.toUpperCase() === propertyId.toUpperCase());
         });
 
-    if (matchedTenants.length == 0) {
+    if (matchedTenants.length === 0) {
         //if no results match the user input
         throw new Error(`No tenants found for ${propertyId}`);
     } else {

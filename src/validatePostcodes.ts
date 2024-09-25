@@ -18,7 +18,7 @@ export async function validatePostcodes() {
             invalidPostcodes = data.filter((record: PropertyDetails) => !validPostcode(record.postcode));
         });
 
-        if (invalidPostcodes.length == 0) {
+        if (invalidPostcodes.length === 0) {
             //all postcodes have passed as being valid
             console.log('All postcodes are valid');
         } else {
