@@ -47,16 +47,13 @@ export async function getPropertyStatus(propertyId: string) {
 
     matchedTenants.length ?
         //The property has no tenants
-        propertyStatus = 'PROPERTY_VACANT'
-    :
+        propertyStatus = 'PROPERTY_VACANT' :
         new Date(tenancyEndDate) > new Date(new Date()) ?
             capacity > matchedTenants.length ?
                 //The property is not yet at capacity and the tenancy end date has not yet expired
-                propertyStatus = 'PARTIALLY_VACANT'
-            :
+                propertyStatus = 'PARTIALLY_VACANT' :
                 //The property is at capacity and the tenancy end date has not yet expired
-                propertyStatus = 'PROPERTY_ACTIVE'
-        :
+                propertyStatus = 'PROPERTY_ACTIVE' :
             //The property has at least one tenant but tenancy end date has expired
             propertyStatus = 'PROPERTY_OVERDUE'
 
