@@ -5,7 +5,12 @@ import { PropertyDetails, TenantDetails } from "./types";
 async function parseCsv<T>(fileName: string, headers: string[]): Promise<T[]> {
     const records: T[] = [];
     const parser = fs.createReadStream(`${__dirname}/files/${fileName}`)
-        .pipe(parse({delimiter: ',', columns: headers, fromLine: 2, cast: true}));
+        .pipe(parse({
+            delimiter: ',',
+            columns: headers,
+            fromLine: 2,
+            cast: true
+        }));
     for await (const record of parser) {
         records.push(record);
     }
